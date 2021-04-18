@@ -27,8 +27,8 @@ pipeline {
         }
          stage('Deploy') {
             steps {
-               gcloud container clusters get-credentials batmanbegins --zone=us-central1-a
-               sh " kubectl apply -f DEV/ "
+               sh " gcloud container clusters get-credentials batmanbegins --zone=us-central1-a
+                    kubectl apply -f DEV/ "
  
             }
         }
