@@ -12,9 +12,24 @@ pipeline {
                 echo 'Testing..'
             }
         }
-        stage('Deploy') {
+        stage('Docker build') {
             steps {
-                echo 'Deploying....'
+                docker build -t dewangsa/petclinic 
+            }
+        }
+         stage('Docker publish') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker_creds', passwordVariable: 'password', usernameVariable: 'user')]) {
+                    docker login -u ${user} -p ${password}
+                    docker push dewangsa/petclinic
+                }
+            }
+        }
+         stage('Deploy') {
+            steps {
+               gcloud container clusters get-credentials batmanbegins --zone=us-central1-a
+               kubectl apply -f DEV/
+ 
             }
         }
     }
