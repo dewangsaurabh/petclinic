@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Docker build') {
             steps {
-                sh "docker build -t dewangsa/petclinic" 
+                sh "docker build -t dewangsa/petclinic ." 
             }
         }
          stage('Docker publish') {
