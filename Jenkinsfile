@@ -20,8 +20,8 @@ pipeline {
          stage('Docker publish') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker_creds', passwordVariable: 'password', usernameVariable: 'user')]) {
-                    sh "docker login -u ${user} -p ${password};
-                    docker push dewangsa/petclinic "
+                    sh """ docker login -u ${user} -p ${password}
+                           docker push dewangsa/petclinic """
                 }
             }
         }
