@@ -14,14 +14,14 @@ pipeline {
         }
         stage('Docker build') {
             steps {
-                docker build -t dewangsa/petclinic 
+                sh "docker build -t dewangsa/petclinic" 
             }
         }
          stage('Docker publish') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker_creds', passwordVariable: 'password', usernameVariable: 'user')]) {
-                    docker login -u ${user} -p ${password}
-                    docker push dewangsa/petclinic
+                    sh "docker login -u ${user} -p ${password};
+                    docker push dewangsa/petclinic "
                 }
             }
         }
