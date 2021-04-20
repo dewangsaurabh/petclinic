@@ -20,15 +20,15 @@ spec:
         ports:
         - containerPort: 8080
         resources:
-          # You must specify requests for CPU to autoscale
-          # based on CPU utilization
           requests:
-            cpu: "250m"
-            memory: "256mi"
+            cpu: 250m
       - name: cloud-sql-proxy
         # It is recommended to use the latest version of the Cloud SQL proxy
         # Make sure to update on a regular schedule!
         image: gcr.io/cloudsql-docker/gce-proxy:1.17
+        resources:
+          requests:
+            cpu: 250m
         command:
           - "/cloud_sql_proxy"
 
@@ -54,4 +54,3 @@ spec:
       - name: sa-secret-vol
         secret:
           secretName: sa-secret
-
