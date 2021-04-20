@@ -26,6 +26,4 @@ To deploy on GKE platform.
 
 CICD Pipeline Configuration. 
 1) Create credentials (username with password) and id docker_creds. 
-2) update cluster name in stage "deploy" to get correct credentials. 
-
-
+2) update cluster name in stage "deploy" to get correct credentials.
