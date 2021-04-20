@@ -17,6 +17,10 @@ spec:
       containers:
       - name: petclinic
         image: dewangsa/petclinic:latest
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
         ports:
         - containerPort: 8080
       - name: cloud-sql-proxy
